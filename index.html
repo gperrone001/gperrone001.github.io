@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trame</title>
+<meta property="og:title" content="Aggiungimi su Trame">
+<meta property="og:description" content="Tocca per aprire Trame e aggiungermi tra i tuoi amici.">
+<style>
+:root{--bg:#120509;--fg:#fff;--acc:#F2C230;--mut:rgba(255,255,255,.75)}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#1a0610,#9F1239 60%,#F2C230);color:var(--fg);font:16px/1.45 system-ui,-apple-system,Roboto,sans-serif}
+main{max-width:360px;padding:32px 20px;text-align:center}
+h1{font:800 44px/1 Impact,'Arial Narrow',sans-serif;letter-spacing:.02em;color:var(--acc);margin:0 0 18px}
+p{color:var(--mut);margin:0 0 22px}
+a.b{display:block;padding:16px;border-radius:16px;font-weight:700;text-decoration:none;margin:10px 0}
+.p{background:var(--acc);color:#1a0610}.s{background:rgba(0,0,0,.3);color:#fff}
+</style></head><body><main>
+<h1>TRAME.</h1>
+<p id="msg">Un amico ti ha invitato su Trame. Apri l'app per aggiungerlo tra i tuoi amici.</p>
+<a class="b p" id="open" href="#">Apri in Trame</a>
+<a class="b s" id="store" href="https://play.google.com/store/apps/details?id=it.gperrone.trame">Scarica Trame</a>
+</main><script>
+var code=(location.hash||'').slice(1), store=document.getElementById('store').href;
+if(navigator.language&&navigator.language.slice(0,2)!=='it'){document.getElementById('msg').textContent='A friend invited you to Trame. Open the app to add them as a friend.';document.getElementById('open').textContent='Open in Trame';document.getElementById('store').textContent='Get Trame';}
+var intent='intent://add/'+code+'#Intent;scheme=trame;package=it.gperrone.trame;S.browser_fallback_url='+encodeURIComponent(store)+';end';
+var open=document.getElementById('open');
+if(/Android/i.test(navigator.userAgent)&&code){ open.href=intent; setTimeout(function(){ location.href=intent; },150); }
+else { open.href=store; }
+</script></body></html>
